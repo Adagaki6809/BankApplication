@@ -48,7 +48,7 @@ namespace BankLibrary
                 T[] tempAccounts = new T[accounts.Length + 1];
                 for (int i = 0; i < accounts.Length; i++)
                     tempAccounts[i] = accounts[i];
-                tempAccounts[tempAccounts.Length - 1] = newAccount;
+                tempAccounts[^1] = newAccount;
                 accounts = tempAccounts;
             }
             // установка обработчиков событий счета
@@ -79,8 +79,7 @@ namespace BankLibrary
         // закрытие счета
         public void Close(int id)
         {
-            int index;
-            T account = FindAccount(id, out index);
+            T account = FindAccount(id, out int index);
             if (account == null)
                 throw new Exception("Счет не найден");
 
@@ -126,7 +125,7 @@ namespace BankLibrary
         // перегруженная версия поиска счета
         public T FindAccount(int id, out int index)
         {
-            for (int i = 0; i < accounts.Length; i++)
+            for (int i = 0; i < accounts?.Length; i++)
             {
                 if (accounts[i].Id == id)
                 {

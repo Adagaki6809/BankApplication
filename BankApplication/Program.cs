@@ -5,7 +5,7 @@ namespace BankApplication
 { 
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] _args)
         {
             Bank<Account> bank = new Bank<Account>("ЮнитБанк");
             bool alive = true;
